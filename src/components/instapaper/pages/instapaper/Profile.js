@@ -1,7 +1,6 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -15,7 +14,6 @@ import Box from '@material-ui/core/Box';
 import Blogs from '../../../.././components/blogs/blogs';
 import GridOnOutLinedIcon from '@material-ui/icons/GridOnOutlined';
 import AndroidIcon from '@material-ui/icons/Android';
-import SettingsIcon from '@material-ui/icons/Settings';
 
 const { Avatar, Typography } = atoms;
 const { Tabs, Tab } = molecules;
@@ -70,14 +68,11 @@ function ProfilePage() {
                           style={{
                             backgroundColor: "#3897f0"
                           }}
-                          fullWidth={!upSm}>
+                          fullWidth={!upSm}
+                          href="https://luffy1727.github.io/my-portfolio/CHINTUSHIG_OCHIRSUKH_RESUME.pdf"
+                          >
                     Resume
                   </Button>
-                  <div className={classes.settings}>
-                    <IconButton>
-                      <SettingsIcon/>
-                    </IconButton>
-                  </div>
                 </Grid>
               </Box>
               <Box mb="20px">
@@ -114,8 +109,8 @@ function ProfilePage() {
             setTabIndex(value);
           }}
         >
-          <Tab label="Posts" icon={<GridOnOutLinedIcon/>} />
-          <Tab label="Coming Soon" icon={<AndroidIcon/>} />
+          <Tab label="My 2¢" icon={<GridOnOutLinedIcon/>} />
+          <Tab label="My Projects" icon={<AndroidIcon/>} />
         </Tabs>
         <Blogs/>
       </Box>

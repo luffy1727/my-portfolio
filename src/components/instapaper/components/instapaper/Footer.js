@@ -2,6 +2,7 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 
 const FooterStyle = {
+    marginTop: '10px',
     position: "sticky",
     height: "10%"
 };
@@ -9,7 +10,7 @@ const FooterStyle = {
 const Footer = () => (
     <AppBar  color="default" elevation={0} style = {FooterStyle}>
         <p>
-            All Rights Reserved
+            This page is powered by reactJS. please hire me
             © 2019 Chintushig Ochirsukh
         </p>
     </AppBar>
