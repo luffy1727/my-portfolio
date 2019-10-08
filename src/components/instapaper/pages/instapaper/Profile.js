@@ -5,18 +5,21 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import atoms from '../../components/atoms';
-import molecules from '../../components/molecules';
 import Header from '../../components/instapaper/Header';
 import Footer from '../../components/instapaper/Footer';
 import theme from '../../theme/instapaper/theme';
 import withTheme from './withTheme';
 import Box from '@material-ui/core/Box';
 import Blogs from '../../../.././components/blogs/blogs';
-import GridOnOutLinedIcon from '@material-ui/icons/GridOnOutlined';
-import AndroidIcon from '@material-ui/icons/Android';
+import AndroidIcon from '@material-ui/icons/AndroidOutlined';
+import KeyboardIcon from '@material-ui/icons/KeyboardOutlined';
+import PhoneIcon from '@material-ui/icons/PhoneIphoneOutlined';
+// import Tabs from '../../../tabs/Tabs'
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import "react-tabs/style/react-tabs.css";
+
 
 const { Avatar, Typography } = atoms;
-const { Tabs, Tab } = molecules;
 
 const useStyles = makeStyles({
   editButton: {
@@ -34,6 +37,31 @@ const useStyles = makeStyles({
     },
   },
 });
+const textStyles = {
+  lineHeight: '5px'
+}
+
+const tabBarStyle =  {
+  weight : '100%',
+  display: 'flex',
+  flexDirection: 'row',
+  tableLayout: 'fixed',
+  width: '100%',
+}
+
+const tabTextStyle = {
+  display : 'flex',
+  marginRight : '15px',
+  // padding: '20px'
+
+}
+
+const tabStyle = {
+  width: '33%',
+  alignItems: 'center',
+  justifyContent: 'center',
+  display: 'flex'
+}
 
 function ProfilePage() {
   const [tabIndex, setTabIndex] = React.useState(0);
@@ -64,6 +92,7 @@ function ProfilePage() {
                     Chintushig Ochirsukh
                   </Typography>
                   <Button className={classes.editButton}
+                          target = '_blank'
                           variant="outlined"
                           style={{
                             backgroundColor: "#3897f0"
@@ -79,7 +108,7 @@ function ProfilePage() {
                 <Grid container spacing={5}>
                   <Grid item>
                     <Typography variant="subtitle1">
-                      <b>4</b> posts
+                      <b>3</b> posts
                     </Typography>
                   </Grid>
                   <Grid item>
@@ -94,25 +123,47 @@ function ProfilePage() {
                   </Grid>
                 </Grid>
               </Box>
-              <Typography variant="subtitle1" bold>
-                Chintushig Ochirsukh
-              </Typography>
-              <Typography variant="subtitle1">Backend Developer @AndSystems</Typography>
-              <Typography variant="subtitle1">Code, Design and everything in between</Typography>
+              <div>
+                <div style = {textStyles}>
+                  <Typography variant="subtitle1" bold>Tushige</Typography>
+                </div>
+                <div>
+                  <Typography variant="subtitle1">Backend Developer @AndSystems</Typography>
+                </div>
+                <div>
+                  <Typography variant="subtitle1">Code, Design and everything in between</Typography>
+                </div>
+              </div>
             </Grid>
           </Grid>
         </Box>
-        <Tabs
-          value={tabIndex}
-          centered
-          onChange={(event, value) => {
-            setTabIndex(value);
-          }}
-        >
-          <Tab label="My 2¢" icon={<GridOnOutLinedIcon/>} />
-          <Tab label="My Projects" icon={<AndroidIcon/>} />
-        </Tabs>
-        <Blogs/>
+        <Box mb="44px">
+          <Tabs>
+            <TabList style = {tabBarStyle}>
+              <Tab style = {tabStyle}>
+                <span style = {tabTextStyle}>{<KeyboardIcon/>}</span>
+                <span style = {tabTextStyle}>Blogposts</span>
+              </Tab>
+              <Tab style = {tabStyle}>
+                <span style = {tabTextStyle}>{<AndroidIcon/>}</span>
+                <span style = {tabTextStyle}>Projects</span>
+              </Tab>
+              <Tab style = {tabStyle}>
+                <span style = {tabTextStyle}>{<PhoneIcon/>}</span>
+                <span style = {tabTextStyle}>Contacts</span>
+              </Tab>
+            </TabList>
+            <TabPanel>
+              <Blogs/>
+            </TabPanel>
+            <TabPanel>
+              <em>projects</em>
+            </TabPanel>
+            <TabPanel>
+              <em>Contact details will be here</em>
+            </TabPanel>
+          </Tabs>
+        </Box>
       </Box>
       <Footer/>
     </React.Fragment>

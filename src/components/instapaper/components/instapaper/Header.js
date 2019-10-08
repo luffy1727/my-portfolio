@@ -23,8 +23,6 @@ const Header = () => (
       <Grid container alignItems="center">
         <Grid item xs>
           <Grid container alignItems="center">
-            <img alt="logo" src={logo} className="image__instagram-logo" />
-            <Divider vertical />
             <img alt="label" className="image__instagram-label" src={require('./logo2.png')} />
           </Grid>
         </Grid>

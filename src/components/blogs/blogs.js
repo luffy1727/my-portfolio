@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
 import './blogs.css';
 import Modal from './Modal';
+import moment from 'moment';
+import atoms from '../instapaper/components/atoms';
+
+const { Avatar, Typography } = atoms;
 
 const galleryStyle = {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(17rem, 1fr))',
-    // gridTemplateRows: '50px calc(100vh - 100px) 50px' 
     gridGap: '1rem',
     margin: '0',
     width: 'auto',
@@ -29,10 +32,11 @@ const galleryItemPictureStyle = {
 };
 
 const descriptionBarStyle = {
-    maxWidth: '240px',
+    maxWidth: '280px',
     maxHeight: '512px',
     height: '512px',
     background: 'white',
+    overflow: 'scroll',
 }
 
 const imageStyle = {
@@ -41,8 +45,29 @@ const imageStyle = {
     maxHeight: '100%'
 };
 
+const titleContainerStyle = {
+    margin : '10px',
+    display: 'flex',
+    flexDirection: 'row'
+};
+
+const textContainerStyle = {
+    margin : '10px',
+}
+
 const titleStyle = {
-    margin : '5px'
+    margin : '10px',
+    display: 'flex',
+    flexDirection: 'column'
+};
+
+const hrStyle = {
+    width: '95%',
+    height: '0.8px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    backgroundColor: '#666',
+    border: '0 none'
 };
 
 const imageContainerStyle = {
@@ -62,7 +87,6 @@ class Blogs extends Component {
             blogs: [],
             currentBlog: ''
         };
-        // this.handleOpenDialog = this.handleOpenDialog.bind(this);
         this.handleCloseDialog = this.handleCloseDialog.bind(this);
     }
     handleOpenDialog = (blog) => {
@@ -77,10 +101,20 @@ class Blogs extends Component {
         });
     }
 
+    handleTimeStamp = (timestamp) => {
+        if (timestamp != null) {
+            for(var key in timestamp) {
+                if(key === '_seconds') {
+                    return moment.unix(timestamp[key]).format("DD-MM-YYYY HH:mm:ss");
+                }
+            }
+        }
+    }
+
     componentDidMount() {
         fetch('https://us-central1-luffy-portfolio.cloudfunctions.net/api/blogs')
             .then(res => res.json())
-            .then(blogs => this.setState({blogs}));
+            .then(blogs => this.setState({blogs}));     
     }
 
     render() {
@@ -101,11 +135,28 @@ class Blogs extends Component {
                         <img style = {imageStyle} alt="blogDetail" src={this.state.currentBlog.thumbnail}/>
                     </div>
                     <div style = {descriptionBarStyle}>
-                        <div style = {titleStyle}>
-                            {this.state.currentBlog.title}
+                        <div style = {titleContainerStyle}>
+                            <Avatar
+                                style={{ margin: 'auto' }}
+                                alt="My profile"
+                                src={require('../instapaper/pages/instapaper/avatar.png')}
+                            />
+                            <div style = {titleStyle}>
+                                <div>
+                                    <Typography component="h1" variant="h5" light>
+                                        {this.state.currentBlog.title}
+                                    </Typography>
+                                </div>
+                                <strong>
+                                    {this.handleTimeStamp(this.state.currentBlog.createdAt)}
+                                </strong>
+                            </div>
                         </div>
-                        <div>
-                            {this.state.currentBlog.text}
+                        <hr style = {hrStyle}/>
+                        <div style ={textContainerStyle}>
+                            <Typography component="h1" variant="h6" lightWeight>
+                                {this.state.currentBlog.text}
+                            </Typography>
                         </div>
                     </div>
                 </Modal>

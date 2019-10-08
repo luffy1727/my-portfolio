@@ -4,10 +4,12 @@
   "private": true,
   "homepage": "https://luffy1727.github.io/my-portfolio",
   "dependencies": {
+    "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-native": "^0.61.2",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "react-tabs": "^3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

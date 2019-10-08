@@ -2,9 +2,11 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 
 const FooterStyle = {
-    marginTop: '10px',
+    padding: '25px 15px 0px 15px',
     position: "sticky",
-    height: "10%"
+    height: "10%",
+    backgroundColor: "#fafafa",
+    textAlign: "center"
 };
 
 const Footer = () => (
