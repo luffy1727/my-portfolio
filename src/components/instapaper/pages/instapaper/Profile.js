@@ -64,7 +64,6 @@ const tabStyle = {
 }
 
 function ProfilePage() {
-  const [tabIndex, setTabIndex] = React.useState(0);
   const classes = useStyles();
   const upSm = useMediaQuery(theme.breakpoints.up('sm'), { defaultMatches: true });
 

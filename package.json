@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://luffy1727.github.io/my-portfolio",
   "dependencies": {
+    "@tanem/react-nprogress": "^3.0.5",
     "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

@@ -3,6 +3,8 @@ import './blogs.css';
 import Modal from './Modal';
 import moment from 'moment';
 import atoms from '../instapaper/components/atoms';
+import './spinner.css'
+import Spinner from './Spinner';
 
 const { Avatar, Typography } = atoms;
 
@@ -79,13 +81,21 @@ const imageContainerStyle = {
     display: 'flex'    
 };
 
+const spinnerContainerStyle = {
+    justifyContent: 'center',
+    alignItems: 'center',
+    display: 'flex',
+    marginTop: '25px'
+}
+
 class Blogs extends Component {
     constructor() {
         super();
         this.state = {
             openDialog: false,
             blogs: [],
-            currentBlog: ''
+            currentBlog: '',
+            isLoading: true
         };
         this.handleCloseDialog = this.handleCloseDialog.bind(this);
     }
@@ -114,11 +124,16 @@ class Blogs extends Component {
     componentDidMount() {
         fetch('https://us-central1-luffy-portfolio.cloudfunctions.net/api/blogs')
             .then(res => res.json())
-            .then(blogs => this.setState({blogs}));     
+            .then(blogs => this.setState({blogs, isLoading: false}));
     }
 
     render() {
         return (
+            this.state.isLoading ?
+            <div style = {spinnerContainerStyle}>
+                <Spinner/>
+            </div>     
+                      :
             <div style = {galleryStyle}>
                 {this.state.blogs.map((blog, i) =>
                     <div style = {galleryItemStyle} key = {i} tabIndex="0">

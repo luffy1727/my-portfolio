@@ -7,15 +7,15 @@ import { faGithub } from '@fortawesome/fontawesome-free-brands';
 import { faLinkedin } from '@fortawesome/fontawesome-free-brands';
 import { faInstagram } from '@fortawesome/fontawesome-free-brands';
 
-const { Divider, Toolbar } = atoms;
+const { Toolbar } = atoms;
 
 const IconStyle = {
   fontSize: "25",
   marginLeft: "1em"
 };
 
-const logo =
-  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhbW8vOS9If-qdZ7-4SL30yXffg9sRyryDcil-2I8JoKSp36CKxw';
+// const logo =
+//   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhbW8vOS9If-qdZ7-4SL30yXffg9sRyryDcil-2I8JoKSp36CKxw';
 
 const Header = () => (
   <AppBar position="sticky" color="default" elevation={0}>
