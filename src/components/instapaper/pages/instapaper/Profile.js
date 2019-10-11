@@ -15,11 +15,13 @@ import Github from '../../../.././components/github/github';
 import AndroidIcon from '@material-ui/icons/AndroidOutlined';
 import KeyboardIcon from '@material-ui/icons/KeyboardOutlined';
 import PhoneIcon from '@material-ui/icons/PhoneIphoneOutlined';
-// import Tabs from '../../../tabs/Tabs'
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import GridOnOutLinedIcon from '@material-ui/icons/GridOnOutlined';
+import molecules from '../../components/molecules';
+
 import "react-tabs/style/react-tabs.css";
 
-const { Avatar, Typography } = atoms;
+const { Avatar, Typography} = atoms;
+const { Tabs, Tab } = molecules;
 
 const useStyles = makeStyles({
   editButton: {
@@ -74,8 +76,8 @@ const tabStyle = {
 
 function ProfilePage() {
   const classes = useStyles();
+  const [tabIndex, setTabIndex] = React.useState(0);
   const upSm = useMediaQuery(theme.breakpoints.up('sm'), { defaultMatches: true });
-
 
   return (
     <React.Fragment>
@@ -128,7 +130,20 @@ function ProfilePage() {
           </Grid>
         </Box>
         <Box mb="44px">
-          <Tabs>
+        <Tabs
+          value={tabIndex}
+          centered
+          onChange={(event, value) => {
+            setTabIndex(value);
+          }}
+        >
+          <Tab label="Posts" icon={<GridOnOutLinedIcon/>} />
+          <Tab label="Coming Soon" icon={<AndroidIcon/>} />
+          <Tab label="Coming Soon" icon={<AndroidIcon/>} />
+        </Tabs>
+        <Blogs/>
+        {/* <TabPanel/> */}
+          {/* <Tabs>
             <TabList style = {tabBarStyle}>
               <Tab style = {tabStyle}>
                 <span style = {tabIconStyle}>{<KeyboardIcon/>}</span>
@@ -152,7 +167,7 @@ function ProfilePage() {
             <TabPanel>
               <em>Contact details will be here</em>
             </TabPanel>
-          </Tabs>
+          </Tabs> */}
         </Box>
       </Box>
       <Footer/>
