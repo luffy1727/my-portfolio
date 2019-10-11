@@ -18,7 +18,7 @@ const IconStyle = {
 //   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhbW8vOS9If-qdZ7-4SL30yXffg9sRyryDcil-2I8JoKSp36CKxw';
 
 const Header = () => (
-  <AppBar position="sticky" color="default" elevation={0}>
+  <AppBar style = {{zIndex : "-1"}} position="sticky" color="default" elevation={0}>
     <Toolbar narrow>
       <Grid container alignItems="center">
         <Grid item xs>

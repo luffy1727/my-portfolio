@@ -95,7 +95,7 @@ class Blogs extends Component {
             openDialog: false,
             blogs: [],
             currentBlog: '',
-            isLoading: true
+            isLoading: true,
         };
         this.handleCloseDialog = this.handleCloseDialog.bind(this);
     }
@@ -124,15 +124,13 @@ class Blogs extends Component {
     componentDidMount() {
         fetch('https://us-central1-luffy-portfolio.cloudfunctions.net/api/blogs')
             .then(res => res.json())
-            .then(blogs => this.setState({blogs, isLoading: false}));
-    }
-
+            .then(blogs => this.setState({blogs, isLoading: false}));        }    
     render() {
         return (
             this.state.isLoading ?
             <div style = {spinnerContainerStyle}>
                 <Spinner/>
-            </div>     
+            </div>
                       :
             <div style = {galleryStyle}>
                 {this.state.blogs.map((blog, i) =>

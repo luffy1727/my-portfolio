@@ -31,7 +31,7 @@ class Modal extends React.Component {
         marginTop: '100px',
         marginBottom: '100px',
         display: 'flex',
-        flexDirection: 'row',    
+        flexDirection: 'row',
     };
 
     return (

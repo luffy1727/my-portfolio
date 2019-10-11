@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -9,15 +10,14 @@ import Header from '../../components/instapaper/Header';
 import Footer from '../../components/instapaper/Footer';
 import theme from '../../theme/instapaper/theme';
 import withTheme from './withTheme';
-import Box from '@material-ui/core/Box';
 import Blogs from '../../../.././components/blogs/blogs';
+import Github from '../../../.././components/github/github';
 import AndroidIcon from '@material-ui/icons/AndroidOutlined';
 import KeyboardIcon from '@material-ui/icons/KeyboardOutlined';
 import PhoneIcon from '@material-ui/icons/PhoneIphoneOutlined';
 // import Tabs from '../../../tabs/Tabs'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import "react-tabs/style/react-tabs.css";
-
 
 const { Avatar, Typography } = atoms;
 
@@ -51,7 +51,16 @@ const tabBarStyle =  {
 
 const tabTextStyle = {
   display : 'flex',
-  marginRight : '15px',
+  marginRight : '20%'
+
+  // padding: '20px'
+}
+
+const tabIconStyle = {
+  display : 'flex',
+  marginLeft: '20%',
+  marginRight : '3%'
+
   // padding: '20px'
 
 }
@@ -103,25 +112,7 @@ function ProfilePage() {
                   </Button>
                 </Grid>
               </Box>
-              <Box mb="20px">
-                <Grid container spacing={5}>
-                  <Grid item>
-                    <Typography variant="subtitle1">
-                      <b>3</b> posts
-                    </Typography>
-                  </Grid>
-                  <Grid item>
-                    <Typography variant="subtitle1">
-                      <b>7</b> followers
-                    </Typography>
-                  </Grid>
-                  <Grid item>
-                    <Typography variant="subtitle1">
-                      <b>27</b> following
-                    </Typography>
-                  </Grid>
-                </Grid>
-              </Box>
+             <Github />
               <div>
                 <div style = {textStyles}>
                   <Typography variant="subtitle1" bold>Tushige</Typography>
@@ -140,15 +131,15 @@ function ProfilePage() {
           <Tabs>
             <TabList style = {tabBarStyle}>
               <Tab style = {tabStyle}>
-                <span style = {tabTextStyle}>{<KeyboardIcon/>}</span>
+                <span style = {tabIconStyle}>{<KeyboardIcon/>}</span>
                 <span style = {tabTextStyle}>Blogposts</span>
               </Tab>
               <Tab style = {tabStyle}>
-                <span style = {tabTextStyle}>{<AndroidIcon/>}</span>
+                <span style = {tabIconStyle}>{<AndroidIcon/>}</span>
                 <span style = {tabTextStyle}>Projects</span>
               </Tab>
               <Tab style = {tabStyle}>
-                <span style = {tabTextStyle}>{<PhoneIcon/>}</span>
+                <span style = {tabIconStyle}>{<PhoneIcon/>}</span>
                 <span style = {tabTextStyle}>Contacts</span>
               </Tab>
             </TabList>
