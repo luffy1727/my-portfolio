@@ -26,7 +26,7 @@ class Github extends Component {
     componentDidMount() {
         fetch('https://us-central1-luffy-portfolio.cloudfunctions.net/api/github')
         .then(res => res.json())
-        .then(github => this.setState({github, isLoading: false}, console.log(github)));
+        .then(github => this.setState({github, isLoading: false}));
     }
 
     render() {
@@ -38,22 +38,22 @@ class Github extends Component {
                       :
             <Box mb="5px">
                 {this.state.github.map((github, i) =>
-                    <Grid container spacing={3}>
-                    <Grid item key = 'repos'>
-                        <Typography variant="subtitle1">
-                        <b>{github.repositories}</b> repositories
-                        </Typography>
-                    </Grid>
-                    <Grid item key = 'followers'>
-                        <Typography variant="subtitle1">
-                        <b>{github.followers}</b> followers
-                        </Typography>
-                    </Grid>
-                    <Grid item key = 'following'>
-                        <Typography variant="subtitle1">
-                        <b>{github.following}</b> following
-                        </Typography>
-                    </Grid>
+                    <Grid container spacing={3} key = {i}>
+                        <Grid item key = 'repos'>
+                            <Typography variant="subtitle1" key = {i}>
+                                <b>{github.repositories}</b> repositories
+                            </Typography>
+                        </Grid>
+                        <Grid item key = 'followers'>
+                            <Typography variant="subtitle1" key = {i}>
+                                <b>{github.followers}</b> followers
+                            </Typography>
+                        </Grid>
+                        <Grid item key = 'following'>
+                            <Typography variant="subtitle1" key = {i}>
+                                <b>{github.following}</b> following
+                            </Typography>
+                        </Grid>
                     </Grid>
                 )}
             </Box>

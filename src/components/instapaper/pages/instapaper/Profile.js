@@ -13,8 +13,6 @@ import withTheme from './withTheme';
 import Blogs from '../../../.././components/blogs/blogs';
 import Github from '../../../.././components/github/github';
 import AndroidIcon from '@material-ui/icons/AndroidOutlined';
-import KeyboardIcon from '@material-ui/icons/KeyboardOutlined';
-import PhoneIcon from '@material-ui/icons/PhoneIphoneOutlined';
 import GridOnOutLinedIcon from '@material-ui/icons/GridOnOutlined';
 import molecules from '../../components/molecules';
 
@@ -41,37 +39,6 @@ const useStyles = makeStyles({
 });
 const textStyles = {
   lineHeight: '5px'
-}
-
-const tabBarStyle =  {
-  weight : '100%',
-  display: 'flex',
-  flexDirection: 'row',
-  tableLayout: 'fixed',
-  width: '100%',
-}
-
-const tabTextStyle = {
-  display : 'flex',
-  marginRight : '20%'
-
-  // padding: '20px'
-}
-
-const tabIconStyle = {
-  display : 'flex',
-  marginLeft: '20%',
-  marginRight : '3%'
-
-  // padding: '20px'
-
-}
-
-const tabStyle = {
-  width: '33%',
-  alignItems: 'center',
-  justifyContent: 'center',
-  display: 'flex'
 }
 
 function ProfilePage() {
@@ -142,32 +109,6 @@ function ProfilePage() {
           <Tab label="Coming Soon" icon={<AndroidIcon/>} />
         </Tabs>
         <Blogs/>
-        {/* <TabPanel/> */}
-          {/* <Tabs>
-            <TabList style = {tabBarStyle}>
-              <Tab style = {tabStyle}>
-                <span style = {tabIconStyle}>{<KeyboardIcon/>}</span>
-                <span style = {tabTextStyle}>Blogposts</span>
-              </Tab>
-              <Tab style = {tabStyle}>
-                <span style = {tabIconStyle}>{<AndroidIcon/>}</span>
-                <span style = {tabTextStyle}>Projects</span>
-              </Tab>
-              <Tab style = {tabStyle}>
-                <span style = {tabIconStyle}>{<PhoneIcon/>}</span>
-                <span style = {tabTextStyle}>Contacts</span>
-              </Tab>
-            </TabList>
-            <TabPanel>
-              <Blogs/>
-            </TabPanel>
-            <TabPanel>
-              <em>projects</em>
-            </TabPanel>
-            <TabPanel>
-              <em>Contact details will be here</em>
-            </TabPanel>
-          </Tabs> */}
         </Box>
       </Box>
       <Footer/>
