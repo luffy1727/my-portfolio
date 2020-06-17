@@ -3,9 +3,9 @@ import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
 import atoms from '../atoms';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub } from '@fortawesome/fontawesome-free-brands';
-import { faLinkedin } from '@fortawesome/fontawesome-free-brands';
-import { faInstagram } from '@fortawesome/fontawesome-free-brands';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 const { Toolbar } = atoms;
 

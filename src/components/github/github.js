@@ -24,12 +24,14 @@ class Github extends Component {
     }
 
     componentDidMount() {
-        fetch('https://us-central1-luffy-portfolio.cloudfunctions.net/api/github')
+        fetch('https://api.github.com/users/luffy1727')
         .then(res => res.json())
         .then(github => this.setState({github, isLoading: false}));
     }
 
     render() {
+        console.log(this.state.github);
+
         return (
             this.state.isLoading ?
             <div style = {spinnerContainerStyle}>
@@ -37,25 +39,23 @@ class Github extends Component {
             </div>
                       :
             <Box mb="5px">
-                {this.state.github.map((github, i) =>
-                    <Grid container spacing={3} key = {i}>
-                        <Grid item key = 'repos'>
-                            <Typography variant="subtitle1" key = {i}>
-                                <b>{github.repositories}</b> repositories
-                            </Typography>
-                        </Grid>
-                        <Grid item key = 'followers'>
-                            <Typography variant="subtitle1" key = {i}>
-                                <b>{github.followers}</b> followers
-                            </Typography>
-                        </Grid>
-                        <Grid item key = 'following'>
-                            <Typography variant="subtitle1" key = {i}>
-                                <b>{github.following}</b> following
-                            </Typography>
-                        </Grid>
+                <Grid container spacing={3} key = {0}>
+                    <Grid item key = 'repos'>
+                        <Typography variant="subtitle1" key = {1}>
+                            <b>{this.state.github.public_repos}</b> repositories
+                        </Typography>
                     </Grid>
-                )}
+                    <Grid item key = 'followers'>
+                        <Typography variant="subtitle1" key = {2}>
+                            <b>{this.state.github.followers}</b> followers
+                        </Typography>
+                    </Grid>
+                    <Grid item key = 'following'>
+                        <Typography variant="subtitle1" key = {3}>
+                            <b>{this.state.github.following}</b> following
+                        </Typography>
+                    </Grid>
+                </Grid>
             </Box>
         );
     }
