@@ -59,7 +59,7 @@ function ProfilePage() {
                 medium={!upSm}
                 style={{ margin: 'auto' }}
                 alt="My profile"
-                src={require('./avatar.png')}
+                src="https://luffy1727.github.io/my-portfolio/avatar.png"
               />
             </Grid>
             <Grid item xs={8}>
@@ -104,9 +104,7 @@ function ProfilePage() {
             setTabIndex(value);
           }}
         >
-          <Tab label="Posts" icon={<GridOnOutLinedIcon/>} />
-          <Tab label="Coming Soon" icon={<AndroidIcon/>} />
-          <Tab label="Coming Soon" icon={<AndroidIcon/>} />
+          <Tab label="Projects" icon={<GridOnOutLinedIcon/>} />
         </Tabs>
         <Blogs/>
         </Box>

@@ -23,8 +23,8 @@ const galleryItemStyle = {
     minWidth: '40%',
     maxWidth: 'auto',
     maxHeight: 'auto',
-    width: '100%',
-    height: '100%'  
+    width: '293px',
+    height: '293px'  
 };
 
 const galleryItemPictureStyle = {
@@ -39,6 +39,7 @@ const descriptionBarStyle = {
     height: '512px',
     background: 'white',
     overflow: 'scroll',
+    position : 'relative'
 }
 
 const imageStyle = {
@@ -115,8 +116,19 @@ class Blogs extends Component {
         if (timestamp != null) {
             for(var key in timestamp) {
                 if(key === '_seconds') {
-                    return moment.unix(timestamp[key]).format("DD-MM-YYYY HH:mm:ss");
+                    return moment.unix(timestamp[key]).format("MMMM d, YYYY").toUpperCase();
                 }
+            }
+        }
+    }
+
+    handleText = (text) => {
+        if (text != null) {
+            if(text.includes("_n")) {
+                var newName = text.replace("_n","\n");
+                return newName;  
+            } else {
+                return text;
             }
         }
     }
@@ -152,7 +164,7 @@ class Blogs extends Component {
                             <Avatar
                                 style={{ margin: 'auto' }}
                                 alt="My profile"
-                                src={require('../instapaper/pages/instapaper/avatar.png')}
+                                src="https://luffy1727.github.io/my-portfolio/avatar.png"
                             />
                             <div style = {titleStyle}>
                                 <div>
@@ -160,15 +172,17 @@ class Blogs extends Component {
                                         {this.state.currentBlog.title}
                                     </Typography>
                                 </div>
-                                <strong>
-                                    {this.handleTimeStamp(this.state.currentBlog.createdAt)}
-                                </strong>
                             </div>
                         </div>
                         <hr style = {hrStyle}/>
                         <div style ={textContainerStyle}>
-                            <Typography component="h1" variant="h6" lightWeight>
-                                {this.state.currentBlog.text}
+                            <Typography style={{ padding: '5px'}} component="h1" variant="h6" lightWeight>
+                                {this.handleText(this.state.currentBlog.text)}
+                            </Typography>   
+                        </div>
+                        <div style = {{bottom : '0', position: 'absolute'}}>
+                            <Typography style={{ padding: '5px', fontSize: '0.8rem'}} component="h1" variant="subtitle1" lightWeight>
+                                {this.handleTimeStamp(this.state.currentBlog.createdAt)}
                             </Typography>
                         </div>
                     </div>

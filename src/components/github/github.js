@@ -30,8 +30,6 @@ class Github extends Component {
     }
 
     render() {
-        console.log(this.state.github);
-
         return (
             this.state.isLoading ?
             <div style = {spinnerContainerStyle}>
