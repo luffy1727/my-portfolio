@@ -26,7 +26,6 @@ class Modal extends React.Component {
         justifyContent: 'center',
         alignItems: 'center',
         // scrolling part
-        overflow:'scroll',
         height: '90%',
         marginTop: '100px',
         marginBottom: '100px',
