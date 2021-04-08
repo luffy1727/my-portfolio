@@ -5,6 +5,7 @@ import moment from 'moment';
 import atoms from '../instapaper/components/atoms';
 import './spinner.css'
 import Spinner from './Spinner';
+import CustomScroll from 'react-custom-scroll';
 
 const { Avatar, Typography } = atoms;
 
@@ -34,12 +35,12 @@ const galleryItemPictureStyle = {
 };
 
 const descriptionBarStyle = {
+    display: 'flex',
+    flexDirection: 'column',
     maxWidth: '280px',
     maxHeight: '512px',
     height: '512px',
     background: 'white',
-    overflow: 'scroll',
-    position : 'relative'
 }
 
 const imageStyle = {
@@ -51,15 +52,27 @@ const imageStyle = {
 const titleContainerStyle = {
     margin : '10px',
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
 };
 
-const textContainerStyle = {
+const descriptionContainerStyle = {
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
     margin : '10px',
 }
 
+const textContainerStyle = {
+    display: 'flex',
+    height: '370px',
+}
+
 const titleStyle = {
-    margin : '10px',
+    margin: '10px',
+    marginLeft: '30px',
     display: 'flex',
     flexDirection: 'column'
 };
@@ -133,6 +146,10 @@ class Blogs extends Component {
         }
     }
 
+    stopPropagation = (e) => {
+        e.stopPropagation();
+    }
+
     componentDidMount() {
         fetch('https://us-central1-luffy-portfolio.cloudfunctions.net/api/blogs')
             .then(res => res.json())
@@ -156,13 +173,12 @@ class Blogs extends Component {
                     </div>
                 )}
                 <Modal open={this.state.openDialog} onCancel={this.handleCloseDialog}>
-                    <div style = {imageContainerStyle}>
+                    <div style = {imageContainerStyle} onClick={this.stopPropagation}>
                         <img style = {imageStyle} alt="blogDetail" src={this.state.currentBlog.thumbnail}/>
                     </div>
-                    <div style = {descriptionBarStyle}>
+                    <div style = {descriptionBarStyle} onClick={this.stopPropagation}>
                         <div style = {titleContainerStyle}>
                             <Avatar
-                                style={{ margin: 'auto' }}
                                 alt="My profile"
                                 src="https://luffy1727.github.io/my-portfolio/avatar.png"
                             />
@@ -175,12 +191,15 @@ class Blogs extends Component {
                             </div>
                         </div>
                         <hr style = {hrStyle}/>
-                        <div style ={textContainerStyle}>
-                            <Typography style={{ padding: '5px'}} component="h1" variant="h6" lightWeight>
-                                {this.handleText(this.state.currentBlog.text)}
-                            </Typography>   
-                        </div>
-                        <div style = {{bottom : '0', position: 'absolute'}}>
+                        <div style = {descriptionContainerStyle}>
+                            <div style = {textContainerStyle}>
+                                <CustomScroll flex="1">
+                                    <Typography style={{ padding: '5px'}} component="h1" variant="h6" lightWeight>
+                                        {this.handleText(this.state.currentBlog.text)}
+                                    </Typography>   
+                                </CustomScroll>  
+                            </div>
+
                             <Typography style={{ padding: '5px', fontSize: '0.8rem'}} component="h1" variant="subtitle1" lightWeight>
                                 {this.handleTimeStamp(this.state.currentBlog.createdAt)}
                             </Typography>
